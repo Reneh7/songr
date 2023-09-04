@@ -1,0 +1,42 @@
+header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+header p {
+    font-size: 18px;
+    font-style: italic;
+}
+
+main {
+    text-align: center;
+    margin: 20px;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+section h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+section p {
+    font-size: 18px;
+    color: #666;
+}
+
+section:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
