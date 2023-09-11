@@ -1,43 +1,33 @@
 package com.example.songr;
-import com.example.songr.models.Album;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class SongrApplicationTests {
-//	@Test
-//	public void testAlbumConstructor() {
-//		Album album = new Album("Test Album", "Test Artist", 5, 200, "test.jpg");
-//
-//		assertThat(album).isNotNull();
-//		assertThat(album.getTitle()).isEqualTo("Test Album");
-//		assertThat(album.getArtist()).isEqualTo("Test Artist");
-//		assertThat(album.getSongCount()).isEqualTo(5);
-//		assertThat(album.getLengthInSeconds()).isEqualTo(200);
-//		assertThat(album.getImageUrl()).isEqualTo("test.jpg");
-//	}
-//
-//	@Test
-//	public void testAlbumGettersAndSetters() {
-//		Album album = new Album();
-//
-//		album.setTitle("Test Album");
-//		album.setArtist("Test Artist");
-//		album.setSongCount(5);
-//		album.setLengthInSeconds(200);
-//		album.setImageUrl("test.jpg");
-//
-//		assertThat(album).isNotNull();
-//		assertThat(album.getTitle()).isEqualTo("Test Album");
-//		assertThat(album.getArtist()).isEqualTo("Test Artist");
-//		assertThat(album.getSongCount()).isEqualTo(5);
-//		assertThat(album.getLengthInSeconds()).isEqualTo(200);
-//		assertThat(album.getImageUrl()).isEqualTo("test.jpg");
-//	}
-//	@Test
-//	void contextLoads() {
-//	}
+    @Autowired
+    MockMvc mockMvc;
+    @Test
+    public void testHelloWorld() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/hello"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Hello World!"));
+        }
+    @Test
+    void testCapitalizeEndpoint() throws Exception {
+        String inputText = "testInput";
+        String expectedUppercaseText = "TESTINPUT";
 
+        mockMvc.perform(MockMvcRequestBuilders.get("/capitalize/" + inputText))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.model().attribute("uppercaseText", expectedUppercaseText));
+    }
 }
+
+
+
