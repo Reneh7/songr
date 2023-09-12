@@ -12,6 +12,13 @@
         <p th:text="${album.artist}"></p>
         <p th:text="${album.songCount + ' songs, ' + album.length + ' seconds'}"></p>
         <img th:src="${album.imageUrl}" th:alt="${album.title}"/>
+
+        <a th:href="@{'/albums/' + ${album.id}}">
+            <button>View Album Details</button>
+        </a>
+        <a th:href="@{'/albums/' + ${album.id} + '/addSong'}">
+            <button>Add a Song</button>
+        </a>
     </li>
 
 </ul>
